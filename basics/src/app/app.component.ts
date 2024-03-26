@@ -9,8 +9,23 @@ import { Component } from '@angular/core';
   // styles : [""]
 })
 export class AppComponent {
-  name = "chinmay"
+  name = "chinmay Sonawane"
   imageUrl = "https://picsum.photos/id/237/500/500"
+  images = [
+    "https://picsum.photos/id/237/500/500",
+    "https://picsum.photos/id/237/500/500",
+    "https://picsum.photos/id/237/500/500"
+  ]
+  currentDate = new Date()
+  cost = 2000
+  temperature = 25.25
+  pizza = {
+    toppings : ["cheese", "sauce"],
+    size : "large"
+  }
+
+  blueClass = false
+  fontSize = 16
 
   getName () {
     return this.name
@@ -18,6 +33,10 @@ export class AppComponent {
 
   changeImage (e : KeyboardEvent) {
     this.imageUrl = (e.target as HTMLInputElement).value
+  }
+
+  logImg (event : string) {
+    console.log(event)
   }
 
 }

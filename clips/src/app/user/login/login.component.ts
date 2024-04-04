@@ -1,59 +1,48 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-
+export class LoginComponent implements OnInit {
   credentials = {
-    email : "",
-    password : ""
+    email: '',
+    password: ''
   }
-
   showAlert = false
-  alertMsg = "Please Wait! We are Logging you in."
-  alertColor = "blue"
+  alertMsg = 'Please wait! We are logging you in.'
+  alertColor = 'blue'
   inSubmission = false
 
-  constructor(private auth : AngularFireAuth) {
+  constructor(private auth: AngularFireAuth) { }
 
+  ngOnInit(): void {
   }
 
-
-  async login () {
+  async login() {
     this.showAlert = true
-    this.alertMsg = "Please Wait! We are Logging you in."
-    this.alertColor = "blue"
+    this.alertMsg = 'Please wait! We are logging you in.'
+    this.alertColor = 'blue'
     this.inSubmission = true
+
     try {
       await this.auth.signInWithEmailAndPassword(
-        this.credentials.email,
-        this.credentials.password
+        this.credentials.email, this.credentials.password
       )
-    } catch (error:any) {
+    } catch(e) {
       this.inSubmission = false
-      switch (error.code) {
-        case "auth/user-not-found":
-          this.alertMsg = "User not found. Please check your email.";
-          break;
-        case "auth/wrong-password":
-          this.alertMsg = "Incorrect password. Please try again.";
-          break;
-        case "auth/too-many-requests":
-          this.alertMsg = "Too many unsuccessful login attempts. Please try again later.";
-          break;
-        default:
-          this.alertMsg = "An Unexpected Error occurred! Please try again later.";
-          break;
-      }
-      this.alertColor = "red"
-      console.log(error)
-      return
+      this.alertMsg = 'An unexpected error occurred. Please try again later.'
+      this.alertColor = 'red'
+
+      console.log(e)
+
+      return 
     }
-    this.alertMsg = "Success! You are now Logged In."
-    this.alertColor = "green"
+
+    this.alertMsg = 'Success! You are now logged in.'
+    this.alertColor = 'green'
   }
+
 }

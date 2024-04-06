@@ -4,7 +4,7 @@ const successColor = '\x1b[32m%s\x1b[0m';
 const checkSign = '\u{2705}';
 const dotenv = require('dotenv').config({path: 'src/.env'});
 
-// Content for environment.ts file
+// Content for environment.ts and environment.prod.ts files
 const envFileContent = `export const environment = {
   production: '${process.env.PRODUCTION}',
   firebase: {
@@ -17,11 +17,10 @@ const envFileContent = `export const environment = {
 };
 `;
 
-// Path to the target environment.ts file
+// Path to the target environments folder
 const targetFolderPath = path.join(__dirname, './src/environments');
-const targetFilePath = path.join(targetFolderPath, 'environment.ts');
 
-// Function to create environments folder and environment.ts file
+// Function to create environments folder and environment files
 const createEnvironmentFiles = () => {
     // Check if environments folder exists, if not, create it
     if (!fs.existsSync(targetFolderPath)) {
@@ -29,12 +28,24 @@ const createEnvironmentFiles = () => {
     }
 
     // Write environment.ts file
+    const targetFilePath = path.join(targetFolderPath, 'environment.ts');
     fs.writeFile(targetFilePath, envFileContent, (err) => {
         if (err) {
             console.error(err);
             throw err;
         } else {
             console.log(successColor, `${checkSign} Successfully generated environment.ts`);
+        }
+    });
+
+    // Write environment.prod.ts file
+    const targetProdFilePath = path.join(targetFolderPath, 'environment.prod.ts');
+    fs.writeFile(targetProdFilePath, envFileContent, (err) => {
+        if (err) {
+            console.error(err);
+            throw err;
+        } else {
+            console.log(successColor, `${checkSign} Successfully generated environment.prod.ts`);
         }
     });
 };

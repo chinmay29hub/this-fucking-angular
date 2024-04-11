@@ -10,5 +10,66 @@
     "profile": {
       "name": "typicode"
     },
-    "employees": []
+    "employees": [
+        {
+            "firstName": "Test",
+            "lastName": "Test",
+            "email": "test@gmail.com",
+            "dob": "2024-04-01T18:30:00.000Z",
+            "gender": "male",
+            "education": "Graduation",
+            "company": "sdsdsd",
+            "experience": 1,
+            "package": 1,
+            "id": 1
+          },
+          {
+            "firstName": "Test",
+            "lastName": "Test",
+            "email": "test@gmail.com",
+            "dob": "2024-04-01T18:30:00.000Z",
+            "gender": "male",
+            "education": "Graduation",
+            "company": "sdsdsd",
+            "experience": 1,
+            "package": 1,
+            "id": 2
+          },
+          {
+            "firstName": "Test",
+            "lastName": "Test",
+            "email": "test@gmail.com",
+            "dob": "2024-04-01T18:30:00.000Z",
+            "gender": "male",
+            "education": "Graduation",
+            "company": "sdsdsd",
+            "experience": 1,
+            "package": 1,
+            "id": 3
+          },
+          {
+            "firstName": "Test",
+            "lastName": "Test",
+            "email": "test@gmail.com",
+            "dob": "2024-04-01T18:30:00.000Z",
+            "gender": "male",
+            "education": "Graduation",
+            "company": "sdsdsd",
+            "experience": 1,
+            "package": 1,
+            "id": 4
+          },
+          {
+            "firstName": "Test",
+            "lastName": "Test",
+            "email": "test@gmail.com",
+            "dob": "2024-04-01T18:30:00.000Z",
+            "gender": "male",
+            "education": "Graduation",
+            "company": "sdsdsd",
+            "experience": 1,
+            "package": 1,
+            "id": 5
+          }
+    ]
   }

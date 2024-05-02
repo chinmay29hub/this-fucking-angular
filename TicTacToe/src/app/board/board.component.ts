@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SquareComponent } from '../square/square.component';
+import { SquareComponent,  } from '../square/square.component';
+import { NbButtonModule } from '@nebular/theme';
+import { SharedVariableService } from '../services/shared-variable.service';
 
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [CommonModule, SquareComponent],
+  imports: [CommonModule, SquareComponent, NbButtonModule],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss'
 })
@@ -13,7 +15,11 @@ export class BoardComponent implements OnInit {
 
   squares : any[] = []
   xIsNext : boolean = false
-  winner : string = ""
+  winner? : string
+
+  constructor (private shared : SharedVariableService) {
+
+  }
 
   ngOnInit(): void {
       this.newGame()
@@ -35,6 +41,11 @@ export class BoardComponent implements OnInit {
       this.xIsNext = !this.xIsNext
     }
     this.winner = this.calculateWinner()
+
+    if (this.winner) {
+      this.shared.isDisabled = true
+    }
+
   }
 
   calculateWinner() {

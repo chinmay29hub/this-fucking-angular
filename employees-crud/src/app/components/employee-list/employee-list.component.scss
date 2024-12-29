@@ -1,0 +1,9 @@
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Adjust the gap as needed */
+}
+
+.action-buttons button {
+  margin-right: 0; /* Remove any default margin */
+}
